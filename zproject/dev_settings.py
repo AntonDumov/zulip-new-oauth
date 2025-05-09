@@ -61,6 +61,7 @@ AUTHENTICATION_BACKENDS: tuple[str, ...] = (
     "zproject.backends.GitLabAuthBackend",
     "zproject.backends.AppleAuthBackend",
     "zproject.backends.GenericOpenIdConnectBackend",
+    "zproject.backends.YaruAuthBackend",
 )
 
 EXTERNAL_URI_SCHEME = "http://"

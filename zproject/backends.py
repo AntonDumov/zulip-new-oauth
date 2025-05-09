@@ -56,6 +56,7 @@ from social_core.backends.gitlab import GitLabOAuth2
 from social_core.backends.google import GoogleOAuth2
 from social_core.backends.open_id_connect import OpenIdConnectAuth
 from social_core.backends.saml import SAMLAuth, SAMLIdentityProvider
+from social_core.backends.yandex import YaruOAuth2
 from social_core.exceptions import (
     AuthCanceled,
     AuthFailed,
@@ -2534,6 +2535,14 @@ class AppleAuthBackend(SocialAuthMixin, AppleIdAuth):
             # We have an open PR to python-social-auth to clean this up.
             self.logger.info("/complete/apple/: %s", str(e))
             return None
+
+
+@external_auth_method
+class YaruAuthBackend(SocialAuthMixin, YaruOAuth2):
+    sort_order = 175
+    auth_backend_name = "Yandex"
+    name = "yaru"
+    display_icon = staticfiles_storage.url("images/authentication_backends/yandex-icon.png")
 
 
 class ZulipSAMLIdentityProvider(SAMLIdentityProvider):

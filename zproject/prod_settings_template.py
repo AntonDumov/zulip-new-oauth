@@ -155,6 +155,7 @@ AUTHENTICATION_BACKENDS: tuple[str, ...] = (
     # "zproject.backends.GitLabAuthBackend",  # GitLab auth, setup below
     # "zproject.backends.AzureADAuthBackend",  # Microsoft Entra ID (AzureAD) auth, setup below
     # "zproject.backends.AppleAuthBackend",  # Apple auth, setup below
+    # "zproject.backends.YaruAuthBackend", # Yandex auth, setup below
     # "zproject.backends.SAMLAuthBackend",  # SAML, setup below
     # "zproject.backends.ZulipLDAPAuthBackend",  # LDAP, setup below
     # "zproject.backends.ZulipRemoteUserBackend",  # Local SSO, setup docs on readthedocs
@@ -554,6 +555,27 @@ SOCIAL_AUTH_SAML_SUPPORT_CONTACT = {
 ## (4) Enter the application ID for the app as SOCIAL_AUTH_AZUREAD_OAUTH2_KEY below
 ## and the generated secret Value in zulip-secrets.conf as `social_auth_azuread_oauth2_secret`.
 # SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = ""
+
+########
+## Yandex OAuth
+##
+## To set up Yandex OAuth2.0 authentication:
+##
+## (1) Open "Third Party Clients" at
+## https://oauth.yandex.com/
+## and click "Create app".
+##
+## (2) In the "Platforms" section select Web services,
+## add https://zulip.example.com/complete/yaru/ as the "Redirect URI"
+## and https://zulip.example.com as "Suggest Hostname" based on values of EXTERNAL_HOST
+## and SOCIAL_AUTH_SUBDOMAIN
+##
+## (3) In "Data Access" section select
+## "Access to email address" and "Access to username, first name and surname, gender"
+##
+## (4) Enter the "ClientID" as SOCIAL_AUTH_YARU_KEY below
+## and the "Client secret" in zulip-secrets.conf as `social_auth_yaru_secret`.
+# SOCIAL_AUTH_YARU_KEY = ""
 
 ########
 ## SSO via REMOTE_USER.
